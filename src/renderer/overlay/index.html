@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Swat Overlay</title>
+  <link rel="stylesheet" href="overlay.css">
+</head>
+<body>
+  <div id="overlay-root">
+    
+    <!-- Super Kawaii Cat-Shaped Memo Pad Reminder -->
+    <div id="reminder-card" class="card-hidden">
+      <!-- Cute Kitten Ears on the Note -->
+      <div class="note-cat-ear ear-left"></div>
+      <div class="note-cat-ear ear-right"></div>
+
+      <!-- Strawberry Candy Washi Tape -->
+      <div class="washi-tape">
+        <span class="washi-heart">💖</span>
+      </div>
+      
+      <div class="card-header">
+        <span class="card-badge" id="card-badge">✨ IN 5 MIN!</span>
+        <span class="card-time-tag" id="card-time-tag">⏰ 10:00 AM</span>
+      </div>
+      
+      <h3 class="card-title" id="card-title">Design Review & Architecture Sync</h3>
+      <div class="card-location" id="card-location">📍 Google Meet</div>
+      
+      <div class="card-action-bar" id="card-action-bar">
+        <button id="join-btn" class="join-btn">
+          <span class="btn-sparkle">🌸</span>
+          <span>Join Meeting</span>
+          <span class="btn-sparkle">✨</span>
+        </button>
+      </div>
+
+      <!-- Cute Kitten Whiskers & Little Paw Stamp -->
+      <div class="card-whisker whisker-l"></div>
+      <div class="card-whisker whisker-r"></div>
+      <div class="card-paw-stamp">🐾</div>
+    </div>
+
+    <!-- Complete Full-Body Upside-Down Anime Kitten -->
+    <div id="cat-actor" class="cat-actor-idle">
+      <img id="cat-img" src="../assets/companions/cat.png" alt="Anime Cat Swat" class="cat-sprite-img">
+    </div>
+
+    <!-- Kitten Stampede / Rolling Parade Container -->
+    <div id="kitty-parade-container"></div>
+
+  </div>
+
+  <script src="overlay.js"></script>
+</body>
+</html>

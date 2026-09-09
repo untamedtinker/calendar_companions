@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar Companions Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="window-container">
+    
+    <!-- Titlebar drag region -->
+    <header class="window-header">
+      <div class="titlebar-drag"></div>
+      <div class="app-brand">
+        <div class="brand-avatar">
+          <img id="brand-avatar-img" src="../assets/companions/cat.png" alt="Companion" class="brand-avatar-thumb">
+        </div>
+        <div class="brand-text">
+          <h1>Calendar Companions</h1>
+          <p>Delightful Meeting Reminders</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Tabs -->
+    <main class="settings-content">
+      
+      <!-- Appearance & Mascot Section -->
+      <section class="config-card">
+        <h2 class="card-section-title">Appearance & Mascot</h2>
+        
+        <div class="form-row">
+          <label class="form-label">Choose Companion</label>
+          <div class="companion-selector" id="companion-selector">
+            <button type="button" class="companion-chip active" data-companion="cat">
+              <img src="../assets/companions/cat.png" alt="Cat" class="chip-avatar-img">
+              <span>Cat</span>
+            </button>
+            <button type="button" class="companion-chip" data-companion="dog">
+              <img src="../assets/companions/dog.png" alt="Dog" class="chip-avatar-img">
+              <span>Dog</span>
+            </button>
+            <button type="button" class="companion-chip" data-companion="monkey">
+              <img src="../assets/companions/monkey.png" alt="Monkey" class="chip-avatar-img">
+              <span>Monkey</span>
+            </button>
+            <button type="button" class="companion-chip" data-companion="rabbit">
+              <img src="../assets/companions/rabbit.png" alt="Bunny" class="chip-avatar-img">
+              <span>Bunny</span>
+            </button>
+            <button type="button" class="companion-chip" data-companion="panda">
+              <img src="../assets/companions/panda.png" alt="Panda" class="chip-avatar-img">
+              <span>Panda</span>
+            </button>
+            <button type="button" class="companion-chip" data-companion="unicorn">
+              <img src="../assets/companions/unicorn.png" alt="Unicorn" class="chip-avatar-img">
+              <span>Unicorn</span>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="form-row">
+          <label class="form-label" for="cornerPosition">Screen Position</label>
+          <select id="cornerPosition" class="select-input">
+            <option value="top-right">Top Right (Default)</option>
+            <option value="top-left">Top Left</option>
+          </select>
+        </div>
+
+        <div class="form-row sound-section-row">
+          <div class="form-row-toggle">
+            <label class="form-label mb-0" for="soundEnabled">Sound Effects</label>
+            <label class="switch">
+              <input type="checkbox" id="soundEnabled" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="sound-desc-pill-wrap">
+            <span class="sound-pill-badge" id="audio-desc">Soft chirp and card slide</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule & Alerts Section -->
+      <section class="config-card">
+        <h2 class="card-section-title">Schedule & Alerts</h2>
+
+        <div class="form-row">
+          <label class="form-label" for="provider">Calendar Provider</label>
+          <select id="provider" class="select-input">
+            <option value="ical">Apple Calendar</option>
+            <option value="google">Google Calendar</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="leadTimeMinutes">Reminder Timing</label>
+          <div class="lead-time-slider-row">
+            <input type="range" id="leadTimeMinutes" min="1" max="15" value="5" class="range-slider">
+            <span class="lead-time-display" id="leadTimeDisplay">5 min before</span>
+          </div>
+        </div>
+
+        <!-- Google OAuth Credentials Panel -->
+        <div id="google-auth-panel" class="google-panel">
+          <div class="google-header">
+            <svg class="google-svg" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <div>
+              <div class="google-title">Google Calendar API</div>
+              <div class="google-sub">Uses OAuth2 via desktop browser login</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="googleClientId">Client ID</label>
+            <input type="text" id="googleClientId" class="text-input" placeholder="xxxxx.apps.googleusercontent.com">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="googleClientSecret">Client Secret</label>
+            <input type="password" id="googleClientSecret" class="text-input" placeholder="GOCSPX-xxxxxxxx">
+          </div>
+
+          <div class="google-status-bar" id="google-status-bar">
+            <span class="status-indicator status-offline" id="status-dot"></span>
+            <span class="status-label" id="status-label">Not Connected</span>
+          </div>
+
+          <div class="google-actions">
+            <button type="button" class="btn btn-secondary" id="authBtn">Connect Google</button>
+            <button type="button" class="btn btn-danger is-hidden" id="disconnectBtn">Disconnect</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer action bar -->
+    <footer class="window-footer">
+      <div class="footer-buttons">
+        <button type="button" class="btn btn-primary" id="testSwatBtn">Preview Companion</button>
+        <button type="button" class="btn btn-save" id="saveBtn">Save Changes</button>
+      </div>
+      <div class="creator-attribution">
+        <span>Designed by <a href="#" id="authorLink" class="creator-link">untamedtinker</a></span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

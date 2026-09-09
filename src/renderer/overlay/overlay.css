@@ -1,0 +1,469 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  pointer-events: none;
+}
+
+#overlay-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   Animal Companions & Natural Appearance
+   ========================================================== */
+.companion-cat,
+.companion-dog,
+.companion-monkey,
+.companion-rabbit,
+.companion-panda,
+.companion-unicorn {
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.3));
+}
+
+
+
+/* ==========================================================
+   Cat Character Rig & Physics
+   ========================================================== */
+/* ==========================================================
+   Complete Full-Body Upside-Down Anime Kitten Actor
+   ========================================================== */
+#cat-actor {
+  position: absolute;
+  top: -42px; /* Tail hooks snugly over the top screen bezel! */
+  right: 18px;
+  width: 250px;
+  height: 250px;
+  transform: translateY(-240px);
+  will-change: transform;
+  z-index: 100;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+  transform-origin: 40% 12%; /* Tail hook anchor point */
+}
+
+.cat-sprite-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Animations */
+.cat-enter {
+  animation: catDropIn 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+}
+
+@keyframes catDropIn {
+  0% { transform: translateY(-240px); }
+  65% { transform: translateY(14px); }
+  85% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+.cat-exit {
+  animation: catClimbUp 0.75s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes catClimbUp {
+  0% { transform: translateY(0px); }
+  25% { transform: translateY(10px); }
+  100% { transform: translateY(-250px); }
+}
+
+/* Playful full-body swing & downward swat lunge */
+.cat-swatting-motion {
+  animation: catFullSwatArc 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes catFullSwatArc {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(6px) rotate(6deg); }   /* Playful lean & curious glance */
+  40% { transform: translateY(2px) rotate(-3deg); }  /* First soft curious tap */
+  70% { transform: translateY(5px) rotate(9deg); }   /* Wind up body & paw */
+  88% { transform: translateY(18px) rotate(-11deg); } /* SWAAAT downward hit! */
+  95% { transform: translateY(4px) rotate(2deg); }   /* Playful bounce */
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* ==========================================================
+   Super Kawaii Anime Memo Pad Note
+   ========================================================== */
+#reminder-card {
+  position: absolute;
+  top: 135px;
+  right: 175px;
+  width: 250px;
+  padding: 16px 18px 14px 18px;
+  background: linear-gradient(135deg, #ffffff 0%, #fffbf5 60%, #fff1f2 100%);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(251, 113, 133, 0.22), 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 3px solid #ffe4e6;
+  opacity: 0;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 50;
+  will-change: transform, opacity;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+}
+
+#reminder-card:hover {
+  box-shadow: 0 24px 50px rgba(251, 113, 133, 0.4), 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: scale(1.04) rotate(-2deg);
+}
+
+/* Card Entry Animation - Smooth gentle roll down & float */
+.card-slide-in {
+  animation: cardRollDownSmooth 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardRollDownSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(-26px) scale(0.92) rotate(-4deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.01) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+}
+
+/* Cute Cat Ears perched on top of the memo card */
+.note-cat-ear {
+  position: absolute;
+  top: -14px;
+  width: 24px;
+  height: 20px;
+  background: #ffffff;
+  border: 3px solid #ffe4e6;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  z-index: -1;
+}
+
+.note-cat-ear::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  width: 12px;
+  height: 10px;
+  background: #fecdd3;
+  border-radius: 8px 8px 0 0;
+}
+
+.ear-left {
+  left: 28px;
+  transform: rotate(-15deg);
+}
+
+.ear-right {
+  right: 28px;
+  transform: rotate(15deg);
+}
+
+/* Candy Washi Tape */
+.washi-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 78px;
+  height: 20px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #fecdd3,
+    #fecdd3 10px,
+    #ffe4e6 10px,
+    #ffe4e6 20px
+  );
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.washi-heart {
+  font-size: 10px;
+}
+
+.card-paw-stamp {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 18px;
+  opacity: 0.18;
+  transform: rotate(20deg);
+}
+
+.card-hidden {
+  display: none;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+  color: #ffffff;
+  padding: 3px 9px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(244, 63, 94, 0.3);
+}
+
+.card-time-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fb923c;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #312e81;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: -0.2px;
+}
+
+.card-location {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a8a29e;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-action-bar {
+  display: flex;
+}
+
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  justify-content: center;
+  background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.join-btn:hover {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(244, 63, 94, 0.5);
+}
+
+.btn-sparkle {
+  font-size: 12px;
+}
+
+/* Playful Kawaii Flutter & Tumble Physics */
+.card-nudged {
+  animation: kawaiiNoteNudge 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes kawaiiNoteNudge {
+  0% { transform: rotate(0deg); }
+  50% { transform: translate(-14px, 10px) rotate(-12deg) scale(1.03); }
+  100% { transform: translate(-8px, 5px) rotate(-6deg); }
+}
+
+.card-tumble-fall {
+  animation: kawaiiFlutterTumble 1.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes kawaiiFlutterTumble {
+  0% {
+    opacity: 1;
+    transform: translate(-8px, 5px) rotate(-6deg) scale(1);
+  }
+  20% {
+    /* Smooth outward curve */
+    opacity: 1;
+    transform: translate(-45px, 110px) rotate(-28deg) scale(0.98);
+  }
+  45% {
+    /* Fluttering roll glide */
+    opacity: 0.95;
+    transform: translate(-90px, 320px) rotate(45deg) scale(0.95);
+  }
+  70% {
+    /* Accelerating soft arc down */
+    opacity: 0.85;
+    transform: translate(-130px, 620px) rotate(130deg) scale(0.9);
+  }
+  100% {
+    /* Fluid departure past the dock */
+    opacity: 0;
+    transform: translate(-165px, 1050px) rotate(220deg) scale(0.82);
+  }
+}
+
+/* ==========================================================
+   Rolling Kitty Stampede & Parade Across Entire Screen
+   ========================================================== */
+#kitty-parade-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 80;
+}
+
+.parade-kitten {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
+  opacity: 0;
+}
+
+.parade-kitten-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+
+/* Personality Emoji / Mood Accents that roll along with the kitten */
+.parade-mood-badge {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  font-size: 22px;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  transform-origin: center center;
+}
+
+/* Rolling from far right completely offscreen to far left */
+@keyframes rollRightToLeft {
+  0% {
+    left: 105vw;
+    transform: rotate(0deg) scale(0.95);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: -22vw;
+    transform: rotate(-720deg) scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Rolling from far left completely offscreen to far right */
+@keyframes rollLeftToRight {
+  0% {
+    left: -22vw;
+    transform: rotate(0deg) scale(0.95);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: 105vw;
+    transform: rotate(720deg) scale(0.95);
+    opacity: 0;
+  }
+}
+
+/* Diagonal tumbling roll across screen */
+@keyframes tumbleDiagonalCross {
+  0% {
+    left: -22vw;
+    top: -10vh;
+    transform: rotate(0deg) scale(0.92);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 105vw;
+    top: 85vh;
+    transform: rotate(720deg) scale(1.05);
+    opacity: 0;
+  }
+}
+
+/* Bouncy tumble from top-right to bottom-left */
+@keyframes tumbleBounceReverse {
+  0% {
+    left: 105vw;
+    top: 5vh;
+    transform: rotate(0deg) scale(0.95);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: -22vw;
+    top: 80vh;
+    transform: rotate(-720deg) scale(1.05);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "calendar-companions",
+  "version": "1.0.0",
+  "description": "Desktop animal companions knock down meeting reminders for Apple Calendar and Google Calendar with physics, procedural audio, and 1-click meeting join",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node tests/unit/ical-provider.test.js && node tests/unit/config-manager.test.js && node tests/unit/calendar-service.test.js && node tests/unit/overlay-card.test.js"
+  },
+  "keywords": ["calendar", "cat", "electron", "macos", "productivity", "notifications"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^30.0.0",
+    "googleapis": "^140.0.0"
+  }
+}
